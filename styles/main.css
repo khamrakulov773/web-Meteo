@@ -47,6 +47,10 @@ main {
   color: red;
   font-size: 1.2rem;
   margin-top: 5px;
+  min-height: 1.5rem;
+  display: block;
+  text-align: center;
+  font-weight: bold;
 }
 
 @keyframes glow {

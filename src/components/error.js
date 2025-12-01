@@ -1,5 +1,6 @@
-const errorMessage = document.getElementById('error-message');
-
 export function showError(message) {
-    errorMessage.textContent
+    const errorMessage = document.getElementById('error-message');
+    if (errorMessage) {
+        errorMessage.textContent = message;
+    }
 }
