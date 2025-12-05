@@ -1,10 +1,11 @@
 import { apiKey, baseUrl } from "./apiKeyAndHost.js";
-import { cityInput } from "../components/inputForm.js";
+import { cityInput, getWeatherByForm } from "../components/inputForm.js";
 import { showError } from "../components/error.js";
 import { isCyrillic } from "../helpers/checkCirillic.js";
 import { replaceAbbreviation } from "../helpers/cityAbbreviation.js";
 import { saveCityToLocalStorage } from "../helpers/saveCityToLocalStorage.js";
-
+import { getWeather, getForecast } from "./getWeatherAndForecast.js";
+import { renderCurrentWeather } from "../components/currentWeather.js";
 
 
 
@@ -39,14 +40,20 @@ export const getGeoData = async () => {
             return;
         }
 
-        saveCityToLocalStorage(city);
-
         const { lat, lon } = geoData[0];
 
-        console.log(lat, lon);
-   
+        saveCityToLocalStorage(city);
+
+        const weatherData = await getWeather(lat, lon);
+        const forecastData = await getForecast(lat, lon);
+
+        console.log(weatherData);
+        console.log(forecastData);
+        
+        renderCurrentWeather(weatherData, city);
+
     } catch (error) {
         console.error(error.message);
-        showError(error.message || 'Данные не получены')
+        showError('Данные не получены')
     }   
-}
+};
