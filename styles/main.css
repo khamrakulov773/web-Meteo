@@ -66,3 +66,45 @@ main {
 .sun-disk {
   animation: glow 2s infinite;
 }
+
+/* ---------- Адаптивность по устройствам ---------- */
+
+/* Телефон: до 600px */
+@media (max-width: 600px) {
+  .container {
+    max-width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 16px;
+  }
+
+  main {
+    row-gap: 24px;
+  }
+}
+
+/* Планшет: 601–1024px */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .container {
+    max-width: 720px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+/* Ноутбук / обычный десктоп: 1025–1600px */
+@media (min-width: 1025px) and (max-width: 1600px) {
+  .container {
+    max-width: 900px; /* базовое значение */
+  }
+}
+
+/* Большой экран / ТВ: больше 1600px */
+@media (min-width: 1601px) {
+  .container {
+    max-width: 1100px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+}
